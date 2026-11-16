@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aprendendo com E-Books: descubra conteúdos digitais para aprender, evoluir e ampliar seus conhecimentos.">
+  <title>Aprendendo com E-Books</title>
+  <style>
+    :root {
+      --black: #0b0b0f;
+      --panel: #15131d;
+      --panel-2: #1d1928;
+      --purple: #8b3dff;
+      --purple-light: #b68aff;
+      --green: #35e28b;
+      --white: #f8f7fb;
+      --muted: #b7b1c3;
+      --border: rgba(182, 138, 255, .19);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--black);
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .container { width: min(1100px, calc(100% - 40px)); margin: auto; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11, 11, 15, .94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .brand {
+      text-decoration: none;
+      font-size: 1.08rem;
+      font-weight: 800;
+      letter-spacing: .3px;
+    }
+    .brand span { color: var(--green); }
+    nav { display: flex; flex-wrap: wrap; gap: 22px; }
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: .94rem;
+      font-weight: 700;
+    }
+    nav a:hover { color: var(--green); }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 94px 0 100px;
+      background:
+        radial-gradient(circle at 82% 22%, rgba(139,61,255,.27), transparent 32%),
+        radial-gradient(circle at 15% 85%, rgba(53,226,139,.13), transparent 30%),
+        linear-gradient(135deg, #100d18, #171025 58%, #0b0b0f);
+    }
+    .hero-content { max-width: 760px; position: relative; z-index: 1; }
+    .tag {
+      display: inline-block;
+      padding: 7px 13px;
+      border: 1px solid rgba(53,226,139,.38);
+      border-radius: 999px;
+      color: var(--green);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 22px 0 16px;
+      font-size: clamp(2.5rem, 7vw, 4.8rem);
+      line-height: 1.04;
+      letter-spacing: -2px;
+    }
+    h1 span { color: var(--purple-light); }
+    .hero p { max-width: 630px; color: var(--muted); font-size: 1.12rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+    .button {
+      display: inline-block;
+      padding: 13px 21px;
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform .2s, filter .2s;
+    }
+    .button:hover { transform: translateY(-2px); filter: brightness(1.08); }
+    .primary { background: var(--green); color: #07140d; }
+    .secondary { border: 1px solid var(--purple); color: var(--white); }
+    section { padding: 70px 0; scroll-margin-top: 80px; }
+    .section-title { text-align: center; margin-bottom: 34px; }
+    .section-title h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin: 0 0 8px; }
+    .section-title h2 span { color: var(--green); }
+    .section-title p { color: var(--muted); margin: 0; }
+    .about {
+      max-width: 790px;
+      margin: auto;
+      text-align: center;
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .card {
+      background: linear-gradient(160deg, var(--panel-2), var(--panel));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 25px;
+      transition: transform .2s, border-color .2s;
+    }
+    .card:hover { transform: translateY(-5px); border-color: var(--purple-light); }
+    .icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(139,61,255,.17);
+      font-size: 1.65rem;
+      margin-bottom: 17px;
+    }
+    .card h3 { margin: 0 0 9px; color: var(--white); }
+    .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+    .product-note {
+      margin-top: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .contact-box {
+      background: linear-gradient(120deg, rgba(139,61,255,.2), rgba(53,226,139,.09));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      text-align: center;
+      padding: 38px 22px;
+    }
+    .contact-box h2 { margin-top: 0; }
+    .contact-box p { color: var(--muted); }
+    .contact-box a:not(.button) { color: var(--green); font-weight: 700; }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: .9rem;
+    }
+    @media (max-width: 760px) {
+      .nav { padding: 15px 0; flex-direction: column; justify-content: center; }
+      nav { justify-content: center; gap: 14px; }
+      .hero { padding: 70px 0 76px; }
+      .cards { grid-template-columns: 1fr; }
+      section { padding: 54px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#inicio">APRENDENDO <span>COM E-BOOKS</span></a>
+      <nav aria-label="Menu principal">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#categorias">Categorias</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-content">
+          <span class="tag">Conhecimento ao seu alcance</span>
+          <h1>Aprenda mais.<br><span>Vá mais longe.</span></h1>
+          <p>Descubra e-books e conteúdos digitais para ampliar seus conhecimentos, desenvolver habilidades e transformar seu tempo de leitura em novas possibilidades.</p>
+          <div class="actions">
+            <a class="button primary" href="#categorias">Explorar conteúdos</a>
+            <a class="button secondary" href="#sobre">Conheça a página</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="container">
+        <div class="section-title">
+          <h2>Sobre <span>nós</span></h2>
+          <p>Uma leitura pode abrir novos caminhos.</p>
+        </div>
+        <p class="about">
+          A Aprendendo com E-Books é um espaço dedicado a compartilhar materiais digitais
+          para quem busca conhecimento, aprendizado e desenvolvimento pessoal. Nosso objetivo
+          é aproximar você de conteúdos úteis, acessíveis e práticos, incentivando a descoberta
+          de novas ideias e habilidades.
+        </p>
+      </div>
+    </section>
+
+    <section id="categorias">
+      <div class="container">
+        <div class="section-title">
+          <h2>Explore nossas <span>categorias</span></h2>
+          <p>Encontre temas que combinam com seus objetivos.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="icon" aria-hidden="true">📚</div>
+            <h3>Educação e estudos</h3>
+            <p>Materiais para apoiar sua jornada de aprendizado e ampliar seus conhecimentos.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">🚀</div>
+            <h3>Empreendedorismo</h3>
+            <p>Ideias e conteúdos introdutórios sobre projetos, negócios e desenvolvimento de habilidades.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">🌱</div>
+            <h3>Desenvolvimento pessoal</h3>
+            <p>Leituras para inspirar novos hábitos, organização e crescimento pessoal.</p>
+          </article>
+        </div>
+        <p class="product-note">Em breve: novidades e novos e-books. Os conteúdos e links de compra podem ser adicionados aqui.</p>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Vamos aprender juntos?</h2>
+          <p>Acompanhe as novidades e entre em contato para saber mais sobre os materiais digitais.</p>
+          <!-- Substitua o e-mail de exemplo pelo seu endereço de contato. -->
+          <a class="button primary" href="mailto:SEUEMAIL@EXEMPLO.COM">Entre em contato</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="ano">2026</span> Aprendendo com E-Books. Todos os direitos reservados.
+    </div>
+  </footer>
+  <script>
+    document.getElementById("ano").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
